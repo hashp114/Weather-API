@@ -51,6 +51,8 @@ python weather_api\database\data_mart\ingest\data_analysis.py
      ![alt text](image-4.png)
 Output – 
 127.0.0.1:5000/api/weather/stats
+
+```
 {
     "data": [
         {
@@ -240,7 +242,7 @@ Output –
     "per_page": 10,
     "total": 1729957
 }
-
+```
 Steps for Deployment on AWS
 
 High-Level AWS Architecture
