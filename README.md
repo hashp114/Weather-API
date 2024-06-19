@@ -55,3 +55,5 @@ http://127.0.0.1:5000/api/weather/stats - weather stats
 ## Swagger UI
 
 Access the Swagger UI documentation at `http://localhost:5000/swagger`.
+
+![alt text](image.png)
