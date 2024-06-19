@@ -1,0 +1,129 @@
+swagger: '2.0'
+info:
+  title: Weather API
+  description: API for weather data and statistics
+  version: 1.0.0
+host: localhost:5000
+schemes:
+  - http
+paths:
+  /api/weather:
+    get:
+      summary: Get weather data
+      parameters:
+        - name: station_id
+          in: query
+          type: integer
+          description: Station ID
+        - name: start_date
+          in: query
+          type: string
+          format: date
+          description: Start date
+        - name: end_date
+          in: query
+          type: string
+          format: date
+          description: End date
+        - name: page
+          in: query
+          type: integer
+          description: Page number
+        - name: per_page
+          in: query
+          type: integer
+          description: Items per page
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/WeatherData'
+              page:
+                type: integer
+              pages:
+                type: integer
+              total:
+                type: integer
+  /api/weather/stats:
+    get:
+      summary: Get weather statistics
+      parameters:
+        - name: station_id
+          in: query
+          type: integer
+          description: Station ID
+        - name: year
+          in: query
+          type: integer
+          description: Year
+        - name: page
+          in: query
+          type: integer
+          description: Page number
+        - name: per_page
+          in: query
+          type: integer
+          description: Items per page
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/StationYearlyStatistics'
+              page:
+                type: integer
+              pages:
+                type: integer
+              total:
+                type: integer
+definitions:
+  WeatherData:
+    type: object
+    properties:
+      id:
+        type: integer
+      date:
+        type: string
+        format: date
+      max_temp:
+        type: integer
+      min_temp:
+        type: integer
+      precipitation:
+        type: integer
+      station_id:
+        type: integer
+      file_name:
+        type: string
+      file_load_date:
+        type: string
+        format: date-time
+  StationYearlyStatistics:
+    type: object
+    properties:
+      id:
+        type: integer
+      station_name:
+        type: string
+      year:
+        type: integer
+      avg_max_temp:
+        type: number
+        format: float
+      avg_min_temp:
+        type: number
+        format: float
+      total_precipitation:
+        type: number
+        format: float
+      row_key:
+        type: string

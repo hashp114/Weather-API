@@ -1,0 +1,12 @@
+fastapi
+SQLAlchemy
+uvicorn
+psycopg2-binary
+python-dotenv
+pytest-cov
+pytest
+Flask==2.0.3
+Flask-SQLAlchemy==2.5.1
+Flask-Marshmallow==0.14.0
+psycopg2-binary==2.9.3
+Flasgger==0.9.5
