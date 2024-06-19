@@ -242,6 +242,7 @@ Output –
     "per_page": 10,
     "total": 1729957
 }
+```
 
 Steps for Deployment on AWS
 
@@ -297,7 +298,6 @@ Step-by-Step Guide
 7. Security and Permissions
     •	Configure IAM Roles: Ensure that EC2 instance or Lambda function has the necessary IAM roles to access RDS, S3, and other AWS services.
 
-```
 
 ## Endpoints
 
