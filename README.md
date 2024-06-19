@@ -242,59 +242,62 @@ Output –
     "per_page": 10,
     "total": 1729957
 }
-```
+
 Steps for Deployment on AWS
 
 High-Level AWS Architecture
+
 1.	AWS EC2 or AWS Lambda: For hosting Flask application.
 2.	Amazon RDS: For the PostgreSQL database.
 3.	Amazon S3: For storing static files
 4.	Amazon API Gateway: For managing the API endpoints.
 5.	Amazon CloudWatch: For logging and monitoring.
 6.	Amazon IAM: For managing roles and permissions.
+
 Step-by-Step Guide
+
 1. Login to AWS
 2. Setting Up Amazon RDS
-•	Create an RDS Instance:
-o	Go to the RDS service in the AWS Management Console.
-o	Choose the PostgreSQL engine.
-o	Configure the instance details (e.g., instance size, VPC, security groups).
-o	Set the database name, username, and password.
-•	Configure Security Groups: Ensure that the security group allows traffic from your EC2 instance or wherever your application will be hosted.
+    •	Create an RDS Instance:
+    •	Go to the RDS service in the AWS Management Console.
+    •	Choose the PostgreSQL engine.
+    •	Configure the instance details (e.g., instance size, VPC, security groups).
+    •	Set the database name, username, and password.
+    •	Configure Security Groups: Ensure that the security group allows traffic from your EC2 instance or wherever your application will be hosted.
 3. Setting Up the Flask Application
-•	Flask application to use the RDS PostgreSQL instance.
+    •	Flask application to use the RDS PostgreSQL instance.
 4. Deploying the Application
-You have two main options: deploying on an EC2 instance or using AWS Lambda with API Gateway.
-Deploy on AWS EC2
-•	Launch an EC2 Instance:
-o	Choose an appropriate instance type.
-o	Configure the instance (security groups, key pairs, etc.).
-•	SSH into the Instance:
-o	Install required software (Python, pip, Flask, etc.).
-o	Install and configure your application dependencies.
-o	Run the Flask application using a WSGI server (like Gunicorn).
-Example setup commands:
-sh
-Copy code
-sudo yum update -y
-sudo yum install python3 -y
-python3 -m venv myenv
-source myenv/bin/activate
-pip install flask flask_sqlalchemy gunicorn
-gunicorn --bind 0.0.0.0:5000 app:app
+    You have two main options: deploying on an EC2 instance or using AWS Lambda with API Gateway.
+    Deploy on AWS EC2
+    •	Launch an EC2 Instance:
+    •	Choose an appropriate instance type.
+    •	Configure the instance (security groups, key pairs, etc.).
+    •	SSH into the Instance:
+    •	Install required software (Python, pip, Flask, etc.).
+    •	Install and configure your application dependencies.
+    •	Run the Flask application using a WSGI server (like Gunicorn).
+    Example setup commands:
+    sh
+    Copy code
+    sudo yum update -y
+    sudo yum install python3 -y
+    python3 -m venv myenv
+    source myenv/bin/activate
+    pip install flask flask_sqlalchemy gunicorn
+    gunicorn --bind 0.0.0.0:5000 app:app
 
-•	Configure Security Groups: Ensure that the security group allows HTTP/HTTPS traffic on the required ports (e.g., port 5000).
+    •	Configure Security Groups: Ensure that the security group allows HTTP/HTTPS traffic on the required ports (e.g., port 5000).
 5. Storing Static Files 
-•	Setup Amazon S3: Create an S3 bucket for storing static files.
-•	Configure Flask to Use S3
+    •	Setup Amazon S3: Create an S3 bucket for storing static files.
+    •	Configure Flask to Use S3
 6. Monitoring and Logging
-•	Setup Amazon CloudWatch:
-o	Configure CloudWatch logs to monitor the application and database.
-o	Set up alarms and dashboards for key metrics.
+    •	Setup Amazon CloudWatch:
+    •	Configure CloudWatch logs to monitor the application and database.
+    •	Set up alarms and dashboards for key metrics.
 7. Security and Permissions
-•	Configure IAM Roles: Ensure that EC2 instance or Lambda function has the necessary IAM roles to access RDS, S3, and other AWS services.
+    •	Configure IAM Roles: Ensure that EC2 instance or Lambda function has the necessary IAM roles to access RDS, S3, and other AWS services.
 
-
+```
 
 ## Endpoints
 
